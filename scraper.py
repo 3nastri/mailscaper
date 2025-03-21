@@ -20,8 +20,6 @@ os.makedirs("/home/runner/work/mailscaper/mailscaper/cache", exist_ok=True)
 from google.colab import drive
 drive.mount('/content/drive')
 
-!pip install transformers torch --quiet
-
 # -*- coding: utf-8 -*-
 """mailscaper.ipynb
 
