@@ -1,0 +1,24 @@
+name: Esegui lo script ogni giorno
+
+on:
+  schedule:
+    - cron: '0 6 * * *'  # Esegue ogni giorno alle 6:00 AM UTC (7:00 in Italia)
+  workflow_dispatch:  # Permette l'esecuzione manuale
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt || echo "No requirements.txt found"
+
+      - name: Run script
+        run: python mailscaper.py
