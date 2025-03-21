@@ -9,16 +9,10 @@ Original file is located at
 
 import requests
 
-# Conferma che il notebook è stato avviato dal Webhook
-requests.get("https://hook.eu2.make.com/cmy5e6w3im83yag7sl5qphxhqwyiahxu")
-
 print("✅ Notebook avviato automaticamente!")
 
 import os
 os.makedirs("/home/runner/work/mailscaper/mailscaper/cache", exist_ok=True)
-
-from google.colab import drive
-drive.mount('/content/drive')
 
 # -*- coding: utf-8 -*-
 """mailscaper.ipynb
@@ -32,7 +26,7 @@ Original file is located at
 import os
 import sys
 
-os.environ["HF_HOME"] = "/content/drive/MyDrive/Colab/cache"
+os.environ["HF_HOME"] = "./cache"
 
 # Verifica la versione di NumPy
 import numpy
@@ -175,4 +169,10 @@ if len(filtered_emails) > 0:
 else:
     print("⚠️ Nessuna email utile trovata.")
 
-print("✅ Script completato!")
+# Conferma che il notebook è stato avviato dal Webhook SOLO SE NON CI SONO ERRORI
+try:
+    requests.get("https://hook.eu2.make.com/cmy5e6w3im83yag7sl5qphxhqwyiahxu")
+    print("✅ Script completato!")
+except Exception as e:
+    print(f"❌ Errore nel Webhook Make.com: {e}")
+
