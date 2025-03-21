@@ -21,4 +21,4 @@ jobs:
         run: pip install -r requirements.txt || echo "No requirements.txt found"
 
       - name: Run script
-        run: python mailscaper.py
+        run: python scraper.py
