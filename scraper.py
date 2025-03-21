@@ -14,7 +14,8 @@ requests.get("https://hook.eu2.make.com/cmy5e6w3im83yag7sl5qphxhqwyiahxu")
 
 print("✅ Notebook avviato automaticamente!")
 
-!mkdir -p /content/drive/MyDrive/Colab/cache
+import os
+os.makedirs("/home/runner/work/mailscaper/mailscaper/cache", exist_ok=True)
 
 from google.colab import drive
 drive.mount('/content/drive')
