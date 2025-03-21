@@ -2,7 +2,7 @@ name: Esegui lo script ogni giorno
 
 on:
   schedule:
-    - cron: '0 6 * * *'  # Esegue ogni giorno alle 6:00 AM UTC (7:00 in Italia)
+    - cron: '0 6 * * *'  # Esegue ogni giorno alle 6:00 AM UTC
   workflow_dispatch:  # Permette l'esecuzione manuale
 
 jobs:
@@ -18,7 +18,7 @@ jobs:
           python-version: '3.9'
 
       - name: Install dependencies
-        run: pip install -r requirements.txt || echo "No requirements.txt found"
+        run: pip install -r requirements.txt
 
       - name: Run script
         run: python scraper.py
